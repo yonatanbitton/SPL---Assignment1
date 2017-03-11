@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/ass1_Reviiyot.dir/src/Card.cpp.o CMakeFiles/ass1_Reviiyot.dir/src/Deck.cpp.o CMakeFiles/ass1_Reviiyot.dir/src/Game.cpp.o CMakeFiles/ass1_Reviiyot.dir/src/Hand.cpp.o CMakeFiles/ass1_Reviiyot.dir/src/Player.cpp.o CMakeFiles/ass1_Reviiyot.dir/src/reviiyot.cpp.o  -o ass1_Reviiyot 
