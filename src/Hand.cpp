@@ -142,7 +142,6 @@ void Hand::clean(){
 	}
 
 	int Hand::MostCommonValue(int N){
-//		cout << N << endl;
 		vector <int> B (N+3,0); //the range is 2..n+ 4 figures
 		for(unsigned int i=0; i<HandVec.size();i++){
 			int currentNumber=HandVec[i]->getNumber();
@@ -151,24 +150,7 @@ void Hand::clean(){
 			if (currentNumber==-2) currentNumber=N+3;
 			if (currentNumber==-1) currentNumber=N+4;
 			B[currentNumber-2]++;
-			//else
-		//	{
-			//	cout << "This is a majesty king ! " << endl;
-				/*switch(currentNumber){
-					case -4: B[N-1]++; break;
-					case -3: B[N]++; break;
-					case -2: B[N+1]++; break;
-					case -1: B[N+2]++; break;
-
-				}*/
-			//	cout << "Out of breaks " << endl;
-
-		//	}
-
 		}
-//		for (unsigned int j=0;j<B.size();j++)
-//			cout << B[j];
-//		cout << endl;
 		int index=0;
 		int num=0;
 		for (unsigned int j=0; j<B.size(); j++){
@@ -176,8 +158,6 @@ void Hand::clean(){
 				num=B[j];
 				index=j;
 			}
-		/*	if (B[j]==index)
-				index=j;*/
 		}
 		if (index<=N-2) {
 			return index+2;
@@ -205,10 +185,6 @@ void Hand::clean(){
 			B[currentNumber-2]++;
 
 		}
-
-//		for (unsigned int j=0;j<B.size();j++){
-//			cout << B[j];
-//		cout << endl;
 		int index=0;
 		int num=N+5;
 		for (unsigned int j=0; j<B.size(); j++){
@@ -300,46 +276,3 @@ void Hand::clean(){
 	}
 
 
-
-
-//	int main(){
-//		Hand* h1=new Hand();
-//		Card *c1 = new FigureCard(Heart , Jack);
-//		Card *c2=new NumericCard( Club , 8);
-//		Card *c3=new FigureCard(Spade , Ace);
-//		Card *def_c4=new FigureCard();
-//		Card *c5=new NumericCard(Club, 5);
-//		Card *c10=new NumericCard( Diamond , 8);
-//		Card *c11=new NumericCard( Spade , 8);
-//		Card *c12=new FigureCard(Spade , Jack);
-//		Card *c13=new FigureCard(Spade , King);
-//
-//		h1->addCard(*c1);
-//		h1->addCard(*c2);
-//		h1->addCard(*c3);
-//		h1->addCard(*def_c4);
-//		h1->addCard(*c5);
-//
-//		h1->addCard(*c10);
-//		h1->addCard(*c11);
-//		h1->addCard(*c12);
-//		h1->addCard(*c13);
-//
-//		cout << "The number of cards is " << h1->getNumberOfCards() << endl;
-//		cout << "The cards are " << h1->toString() << endl;
-//		h1->removeCard(*c1);
-//		cout << "After removal of JH, The cards are " << h1->toString() << endl;
-//		Card *c6=new FigureCard(Heart, Ace);
-//		h1->addCard(*c6);
-//		cout << "The card " << c6->toString() << " is added" << endl;
-//		bool b1=h1->addCard(*c6);
-//		cout << b1 << "!!! This card is already in the deck! " << endl;
-//		cout << " And indeed the vector is " << h1->toString() << endl;
-//		cout << "The most common value is: " << h1->MostCommonValue(8) << endl;
-//		cout << "The Least common value is: " << h1->LeastCommonValue(8) << endl;
-//		cout << "The Highest value is: " << h1->HighestValueAtHand(8) << endl;
-//		cout << "The Lowest value is: " << h1->LowestValueAtHand(8) << endl;
-//		cout << "The hand is" << h1->toString() << endl;
-//
-//		return 0;
-//	}
