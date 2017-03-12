@@ -10,9 +10,6 @@ using namespace std;
 	// Card
 	Card::Card(Shape par_shape):shape(par_shape){}
 
-//	Card (const Card& otherCard) :shape(otherCard.getShape()), {}
-//	Card& operator=(const Card& otherCard);
-
   	string Card::toString(){
   		string shape_str;
   		switch (shape){
