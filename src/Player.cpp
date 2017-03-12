@@ -77,8 +77,6 @@ void PlayerType1::play(Game& g){
 		oss<< ValueNeeded;
 		valForPrint=oss.str();
 	}
-//	cout << "The ValueNeeded is " << ValueNeeded << endl;
-//	cout << "The value needed is " << ValueNeeded << endl;
 	int k=0;
 	for (unsigned int i=0; i<RequestFrom->getHand().size(); i++) // This loop moves cards from the requested player to me.
 	{
@@ -96,10 +94,8 @@ void PlayerType1::play(Game& g){
 			i=i-1;
 		}
 	}
-//	cout << "Now " << toString() << endl;
 	vector <Player*>& winners=g.getWinners();
 
-	// I need to duplicate the winner GEVER
 	if (isWinner()){
 		Player* p = makePlayer();
 		winners.push_back(p); // This section checks for winners before the requested player draws card from the deck
@@ -119,18 +115,12 @@ void PlayerType1::play(Game& g){
 			return;
 		}
 	if(k!=0){  // Here the requested player draws card from the deck
-//			cout << "The K is " << k << endl;
 			vector<Card*> asking;
-//			cout << "At Player.cpp, BEFORE the deck is " << g.getGameDeck().toString() << endl;
 			g.getGameDeck().drawKcards(k, asking);
-//			cout << "At Player.cpp, AFTER the deck is " << g.getGameDeck().toString() << endl;
 			for(unsigned int j=0;j<asking.size();j++){
-//				cout << "The asking[j] is " << "For j=" << j << " is " << asking[j]->toString() << endl;
 				RequestFrom->addCard(*asking[j]);
 				delete asking[j];
 			}
-	//		cout << "Now after Charlie took from the deck, he's got " << RequestFrom->toString() << endl;
-//			cout << "Now after Charlie took, the deck is " << g.getGameDeck().toString() << endl;
 			if (RequestFrom->isWinner())
 				{
 				Player* copyRequestFrom = RequestFrom->makePlayer();
@@ -142,8 +132,6 @@ void PlayerType1::play(Game& g){
 					}
 				}
 			asking.clear();
-	//		cout << "The hand of me is " << toString() << endl;
-	//		cout << "And Charlie's is " << RequestFrom->toString() << endl;
 	}
 	else if (k==0) {
 		if (g.getGameDeck().getNumberOfCards()>0){
@@ -201,9 +189,6 @@ void PlayerType2::play(Game& g){
 		oss<< ValueNeeded;
 		valForPrint=oss.str();
 	}
-//	cout << "The requested player is " << RequestFrom->toString() << endl;
-//	cout << "The value needed is " << ValueNeeded << endl;
-//	cout << "The deck is " << g.getGameDeck().toString() << endl;
 	int k=0;
 	for (unsigned int i=0; i<RequestFrom->getHand().size(); i++) // This loop moves cards from the requested player to me.
 	{
@@ -216,9 +201,6 @@ void PlayerType2::play(Game& g){
 			i=i-1;
 		}
 	}
-//	cout << "And now after I got cards from the requested player" << endl;
-//	cout << "I'm " << toString() ;
-//	cout << "And the requested is " << RequestFrom->toString() << endl;
 	vector <Player*>& winners=g.getWinners();
 	if (isWinner()){
 		Player* p = makePlayer();
@@ -240,8 +222,6 @@ void PlayerType2::play(Game& g){
 		}
 	if(k!=0){ // Here the requested player draws card from the deck
 		vector<Card*> asking;
-//		cout << "Now the requested player needs to draw cards ! and the deck is " << g.getGameDeck().toString() << endl;
-//		cout << "And k is " << k << endl;
 		g.getGameDeck().drawKcards(k, asking);
 		for(unsigned int j=0;j<asking.size();j++){
 			RequestFrom->addCard(*asking[j]);
@@ -318,9 +298,7 @@ void PlayerType3::play(Game& g){
 	for (unsigned int i=0; i<RequestFrom->getHand().size(); i++){ // This loop moves cards from the requested player to me.
 		if (RequestFrom->getHand()[i]->getNumber()==ValueNeeded){
                         k++;
-                        //Card* c = RequestFrom->getHand()[i]->makeCard();
 			addCard(*RequestFrom->getHand()[i]);
-			//cout << "I added it from the requested player to me, and now I want to remove it from the requested player hand" << endl;
 			RequestFrom->removeCard(*RequestFrom->getHand()[i]);
 			i=i-1;
 		}
@@ -426,8 +404,6 @@ void PlayerType4::play(Game& g){
 	for (unsigned int i=0; i<RequestFrom->getHand().size(); i++){ // This loop moves cards from the requested player to me.
 		if (RequestFrom->getHand()[i]->getNumber()==ValueNeeded){
 			k++;
-                     //   Card* c = RequestFrom->getHand()[i]->makeCard();
-	//		this->getHand().push_back(getHand()[i]);
 			addCard(*RequestFrom->getHand()[i]);
 			RequestFrom->removeCard(*RequestFrom->getHand()[i]);
 			i=i-1;
@@ -501,33 +477,3 @@ Player* PlayerType4::makePlayer(){
 		Player* p = new PlayerType4(*this);
 		return p;
 	}
-
-//int main(int argc, char **argv){
-//	Card *c1 = new FigureCard(Heart , Jack);
-//	Card *c2=new NumericCard( Club , 8);
-//	Card *c3=new FigureCard(Spade , Ace);
-//	Card *def_c4=new FigureCard();
-//	Card *c5=new NumericCard(Club, 5);
-//	Card *c10=new NumericCard( Diamond , 8);
-//	Card *c11=new NumericCard( Spade , 8);
-//	Card *c12=new FigureCard(Spade , Jack);
-//	Card *c13=new FigureCard(Spade , King);
-//	Player* Yossi=new PlayerType1("Yossi");
-//	Yossi->addCard(*c1);
-//	Yossi->addCard(*c2);
-//	Yossi->addCard(*c3);
-//	Yossi->addCard(*def_c4);
-//	Yossi->addCard(*c5);
-//	Yossi->addCard(*c10);
-//	Yossi->addCard(*c11);
-//	Yossi->addCard(*c12);
-//	Yossi->addCard(*c13);
-//	cout << "Yossi's name is " << Yossi->getName();
-//	cout << "Yossi's toString is " << Yossi->toString();
-//	char* con=argv[1];
-//	Game game = Game(con);
-//	game.printState();
-
-
-//return 0;
-//}
